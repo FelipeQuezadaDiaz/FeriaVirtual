@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Menú Transportista";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feria Virtual Maipo Grande - Menú Transportista</title>
+    <style>
+        body {
+            background-color: #E8F8E0; /* Fondo de la página en verde claro */
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        h1 {
+            color: #008000; /* Texto en verde oscuro */
+        }
+
+        .menu-button {
+            display: inline-block;
+            margin: 20px;
+            padding: 20px 40px;
+            background-color: #008000; /* Botón en verde oscuro */
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+
+            .menu-button:hover {
+                background-color: #006400; /* Oscurecer el botón al pasar el ratón por encima */
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Menú Transportista</h1>
+
+        <a class="menu-button" href="@Url.Action("Index", "MedioTransporte")">Ver Transportes</a>
+        <a class="menu-button" href="@Url.Action("Index", "Subastas")">Subastar Transporte</a>
+    </div>
+</body>
+</html>

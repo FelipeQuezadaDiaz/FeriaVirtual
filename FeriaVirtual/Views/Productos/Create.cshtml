@@ -1,0 +1,72 @@
+﻿@model FeriaVirtual.Negocio.Productos
+
+@{
+    ViewBag.Title = "Agregar Productos";
+}
+
+<style>
+    body {
+        background-color: #E8F8E0; /* Fondo de la página en verde claro */
+        font-family: Arial, sans-serif;
+    }
+
+   
+
+    h2 {
+        text-align: center;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    select {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    button {
+        background-color: #007BFF;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+    }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+<div style="position: absolute; top: 60px; left: 10px;">
+    <a href="@Url.Action("Index", "Productos")" class="btn btn-sm btn-transparent" style="border: 1px solid;">Volver</a>
+</div>
+
+<div class="container">
+    <h2>Agregar Productos</h2>
+    
+    @using (Html.BeginForm())
+    {
+        @Html.LabelFor(p => p.Nombre)
+        @Html.TextBoxFor(p => p.Nombre)
+
+        @Html.LabelFor(p => p.Precio)
+        @Html.TextBoxFor(p => p.Precio)
+
+        @Html.LabelFor(p => p.Stock)
+        @Html.TextBoxFor(p => p.Stock)
+
+        @Html.LabelFor(p => p.IDProductor, "Productor")
+        @Html.DropDownListFor(p => p.IDProductor, new SelectList(ViewBag.productor, "ID", "Nombre"))
+
+        <button>Guardar</button>
+    }
+</div>

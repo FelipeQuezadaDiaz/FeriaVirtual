@@ -16,6 +16,7 @@ namespace FeriaVirtual.Negocio
         public string Telefono { get; set; }
         public string Correo { get; set; }
 
-        
+         
+
     }
 }

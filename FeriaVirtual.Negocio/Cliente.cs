@@ -11,6 +11,7 @@ namespace FeriaVirtual.Negocio
 
 
         public decimal Id { get; set; }
+
         public string Nombre { get; set; }
         public string TipoCliente { get; set; }
         public string Direccion { get; set; }

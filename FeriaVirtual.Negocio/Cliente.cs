@@ -9,6 +9,7 @@ namespace FeriaVirtual.Negocio
     public class Cliente
     {
 
+
         public decimal Id { get; set; }
         public string Nombre { get; set; }
         public string TipoCliente { get; set; }

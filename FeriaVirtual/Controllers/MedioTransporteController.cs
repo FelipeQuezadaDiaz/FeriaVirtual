@@ -12,7 +12,7 @@ namespace FeriaVirtual.Controllers
         public ActionResult Index()
         {
 
-            ViewBag.MedioTransporte = new MedioTransporte().ReadAll();
+            ViewBag.MedioTransporte = new MedioTransporte().ReadById((decimal)Session["UserID"]);
 
             return View();
         }
@@ -33,7 +33,8 @@ namespace FeriaVirtual.Controllers
 
         private void EnviarTransportistas()
         {
-            ViewBag.transportista = new Transportista().ReadAll();
+            ViewBag.transportista = new Transportista().ReadById((decimal)Session["UserID"]);
+
         }
 
         // POST: MedioTransporte/Create
@@ -43,6 +44,7 @@ namespace FeriaVirtual.Controllers
             try
             {
                 // TODO: Add insert logic here
+                
                 medioTransporte.Save();
                
                 TempData["MedioTransporteAgregado"] = "Producto agregado exitosamente";

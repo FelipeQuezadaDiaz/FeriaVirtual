@@ -8,7 +8,7 @@ namespace FeriaVirtual.Controllers
 {
     public class MenuTransportistaController : Controller
     {
-        [Authorize]
+        [UserTypeAuthorize("transportista")]
         // GET: MenuTransportista
         public ActionResult Index()
         {

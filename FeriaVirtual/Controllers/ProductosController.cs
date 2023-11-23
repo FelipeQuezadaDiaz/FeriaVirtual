@@ -10,7 +10,7 @@ namespace FeriaVirtual.Controllers
 
     public class ProductosController : Controller
     {
-        [Authorize]
+        [UserTypeAuthorize("productor")]
         // GET: Productos
         public ActionResult Index()
         {

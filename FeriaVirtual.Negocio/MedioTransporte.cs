@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FeriaVirtual.DALC;
+
 namespace FeriaVirtual.Negocio
 {
     public class MedioTransporte
@@ -22,6 +23,37 @@ namespace FeriaVirtual.Negocio
         public Transportista Transportista { get; set; }
 
         FeriaVirtualEntities db = new FeriaVirtualEntities();
+
+        public List<MedioTransporte> ReadById(decimal Id)
+        {
+            try
+            {
+                return this.db.MEDIOTRANSPORTE
+                    .Where(p => p.TRANSPORTISTAID == Id)
+                    .Select(p => new MedioTransporte()
+                    {
+                        ID = p.MEDIOID,
+                        Patente = p.PATENTE,
+                        Ancho = p.ANCHO,
+                        Largo = p.LARGO,
+                        Alto = p.ALTO,
+                        Capacidad = (decimal)p.CAPACIDAD,
+                        Refrigerado = (decimal)p.REFRIGERADO,
+                        Precio = (decimal)p.PRECIO,
+                        IDTransportista = p.TRANSPORTISTAID,
+                        Transportista = new Transportista()
+                        {
+                            ID = p.TRANSPORTISTAID,
+                            Nombre = p.TRANSPORTISTA.NOMBRE
+                        }
+                    }).ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener por ID: " + ex.Message);
+                return null;
+            }
+        }
 
         public List<MedioTransporte> ReadAll()
         {

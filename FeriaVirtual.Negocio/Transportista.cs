@@ -27,6 +27,26 @@ namespace FeriaVirtual.Negocio
             }).ToList();
 
         }
+
+        public List<Transportista> ReadById(decimal Id)
+        {
+            try
+            {
+                return this.db.TRANSPORTISTA
+                    .Where(c => c.TRANSPORTISTAID == Id)
+                    .Select(c => new Transportista()
+                    {
+                        ID = c.TRANSPORTISTAID,
+                        Nombre = c.NOMBRE
+
+                    }).ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener por ID: " + ex.Message);
+                return null;
+            }
+        }
     }
 
     

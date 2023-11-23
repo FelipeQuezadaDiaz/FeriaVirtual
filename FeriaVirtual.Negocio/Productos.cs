@@ -19,6 +19,34 @@ namespace FeriaVirtual.Negocio
 
         FeriaVirtualEntities db = new FeriaVirtualEntities();
 
+        public List<Productos> ReadByProductorId(decimal productorId)
+        {
+            try
+            {
+                return this.db.PRODUCTOS
+                    .Where(p => p.PRODUCTORID == productorId)
+                    .Select(p => new Productos()
+                    {
+                        ID = (decimal)p.PRODUCTOID,
+                        Nombre = p.NOMBRE,
+                        Precio = (decimal)p.PRECIO,
+                        Stock = (decimal)p.STOCK,
+                        IDProductor = (decimal)p.PRODUCTORID,
+                        Productor = new Productor()
+                        {
+                            ID = (decimal)p.PRODUCTORID,
+                            Nombre = p.PRODUCTOR.NOMBRE
+                        }
+                    })
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener por ID de productor: " + ex.Message);
+                return null; 
+            }
+        }
+
         public List<Productos> ReadAll()
         {
             return this.db.PRODUCTOS.Select(p => new Productos()
@@ -35,6 +63,8 @@ namespace FeriaVirtual.Negocio
                 }
             }).ToList();
         }
+
+        
 
         public bool Save()
         {

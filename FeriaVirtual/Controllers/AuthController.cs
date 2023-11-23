@@ -21,13 +21,15 @@ namespace FeriaVirtual.Controllers
             if (IsValid(usuario))
             {
                 FormsAuthentication.SetAuthCookie(usuario.Email, false);
+                //FormsAuthentication.SetAuthCookie(usuario.Id.ToString(), false);
 
                 // Obtén el rol del usuario autenticado
                 var rolUsuario = usuario.ObtenerRolUsuario();
+                var idUsuario = usuario.ObtenerIdUsuario();
 
                 // Agrega una declaración de depuración para verificar el rol del usuario
                 System.Diagnostics.Debug.WriteLine("Rol del usuario: " + rolUsuario);
-
+                System.Diagnostics.Debug.WriteLine("Id del usuario: " + idUsuario);
 
 
                 if (ReturnUrl != null)
@@ -36,7 +38,9 @@ namespace FeriaVirtual.Controllers
                 }
 
                 // Guarda el rol del usuario en una variable de sesión para su posterior uso
-                Session["UserRole"] = rolUsuario;
+                Session["Roles"] = rolUsuario;
+                Session["UserID"] = idUsuario;
+
                 return RedirectToAction("Index", "Home");
             }
             TempData["mensaje"] = "Credenciales Incorrectas";

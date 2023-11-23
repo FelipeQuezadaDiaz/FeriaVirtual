@@ -107,6 +107,7 @@
     <Compile Include="Controllers\MedioTransporteController.cs" />
     <Compile Include="Controllers\MenuTransportistaController.cs" />
     <Compile Include="Controllers\ProductosController.cs" />
+    <Compile Include="Controllers\UserTypeAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -32,6 +32,20 @@ namespace FeriaVirtual.Negocio
             return false;
         }
 
+        public bool AutenticarTipo(decimal id, int expectedTipoID)
+        {
+            try
+            {
+                return db.USUARIOS.Any(u => u.USUARIOID == id && u.TIPOUSUARIOID == expectedTipoID);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error during TipoID check: " + ex.Message);
+                return false;
+            }
+        }
+
         public string ObtenerRolUsuario()
         {
             // Consulta la tabla "Tipo de usuario" para obtener el nombre del rol del usuario.
@@ -39,6 +53,15 @@ namespace FeriaVirtual.Negocio
                 .FirstOrDefault(TI => TI.TIPOUSUARIOID == this.TipoID);
 
             return tipoUsuario?.NOMBRETIPO;
+        }
+
+        public decimal? ObtenerIdUsuario()
+        {
+            // Consulta la tabla "Tipo de usuario" para obtener el nombre del rol del usuario.
+            var Usuario = db.USUARIOS
+                .FirstOrDefault(TI => TI.USUARIOID == this.Id);
+
+            return Usuario?.USUARIOID;
         }
 
 
